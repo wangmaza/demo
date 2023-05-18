@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
  */
@@ -38,7 +40,11 @@ public class BasicController {
     // http://127.0.0.1:8080/user
     @RequestMapping("/user")
     @ResponseBody
-    public User user() {
+    public User user(HttpServletRequest request) {
+        
+        System.out.println(request.getRemoteAddr());
+        System.out.println(request.getRequestURL());
+        
         User user = new User();
         user.setName("theonefx");
         user.setAge(666);
